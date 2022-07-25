@@ -42,7 +42,8 @@ class Solution:
         # return type: int
         # TODO: Write code below to return an int with the solution to the prompt
         price = 0
-        total = 0
+        first = 0
+        second = 0
         initial = prices[0]
         pos = 0
         max = 0
@@ -51,15 +52,24 @@ class Solution:
             if max-temp > temp:
                 initial = prices[x]
                 pos = x
-                total += price
-                price = 0
+                if price>=second:
+                    if price >= first:
+                        first = price
+                    else:
+                        second = price
+           
             if temp > price and temp > 0:
                 price = temp
                 max = prices[x]
-
+        
         if pos != len(prices)-1:
-            total+=price
-        return total
+            if price>=second:
+                if price >= first:
+                    first = price
+                else:
+                    second = price
+        
+        return first + second
 
 
 def main():
