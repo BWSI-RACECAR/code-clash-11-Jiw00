@@ -49,7 +49,7 @@ class Solution:
         max = 0
         for x in range(pos, len(prices)):
             temp = prices[x] - initial
-            if max-temp > temp:
+            if prices[x] < max:
                 initial = prices[x]
                 pos = x
                 if price>=second:
