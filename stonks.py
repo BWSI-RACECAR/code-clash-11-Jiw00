@@ -45,16 +45,17 @@ class Solution:
         total = 0
         initial = prices[0]
         pos = 0
-        print(prices)
+        max = 0
         for x in range(pos, len(prices)):
-            if initial >= prices[x]:
+            temp = prices[x] - initial
+            if max-temp > temp:
                 initial = prices[x]
                 pos = x
                 total += price
                 price = 0
-            temp = prices[x] - initial
             if temp > price and temp > 0:
                 price = temp
+                max = prices[x]
 
         if pos != len(prices)-1:
             total+=price
