@@ -52,8 +52,8 @@ class Solution:
             if prices[x] < max:
                 initial = prices[x]
                 pos = x
-                if price>=second:
-                    if (price >= first and second > 0) or first == 0:
+                if price> second:
+                    if price > first  or first == 0:
                         second = first
                         first = price
                     else:
@@ -63,13 +63,12 @@ class Solution:
                 price = temp
                 max = prices[x]
         
-        if price>=second:
-            if price >= first:
+        if price>second:
+            if price > first:
                 second = first
                 first = price
             else:
                 second = price
-    
         return first + second
 
 def main():
