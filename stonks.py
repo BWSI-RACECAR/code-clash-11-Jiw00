@@ -53,24 +53,23 @@ class Solution:
                 initial = prices[x]
                 pos = x
                 if price>=second:
-                    if price >= first:
+                    if (price >= first and second > 0) or first == 0:
                         first = price
                     else:
                         second = price
+                price = 0
            
             if temp > price and temp > 0:
                 price = temp
                 max = prices[x]
         
-        if pos != len(prices)-1:
-            if price>=second:
-                if price >= first:
-                    first = price
-                else:
-                    second = price
-        
+        if price>=second:
+            if price >= first:
+                first = price
+            else:
+                second = price
+    
         return first + second
-
 
 def main():
     array = input().split(" ")
