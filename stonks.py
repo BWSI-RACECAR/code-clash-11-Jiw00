@@ -41,35 +41,39 @@ class Solution:
         # type prices: list
         # return type: int
         # TODO: Write code below to return an int with the solution to the prompt
-        price = 0
-        first = 0
-        second = 0
-        initial = prices[0]
-        pos = 0
-        max =  prices[0]
-        for x in range(pos, len(prices)):
-            temp = prices[x] - initial
-            if prices[x] < max:
-                initial = prices[x]
-                pos = x
-                if price> second:
-                    if price > first  or first == 0:
-                        second = first
-                        first = price
-                    else:
-                        second = price
-                price = 0
-            if temp > price and temp > 0:
-                price = temp
-                max = prices[x]
-        
-        if price>second:
-            if price > first:
-                second = first
-                first = price
+
+        min_price1 = 100000 
+        profit1 = []  
+        max_profit1 = 0 
+
+        for x in prices:
+            if min_price1 > x:
+                min_price1 = x
             else:
-                second = price
-        return first + second
+                max_profit1 = max(max_profit1, x - min_price1)
+            
+            profit1.append(max_profit1)
+
+        max_price2 = 0 
+        profit2 = [0]*len(prices)
+        max_profit2 = 0 
+
+        for i in range(len(prices) - 1, -1, -1): 
+            x = prices[i] 
+            if x > max_price2: 
+                max_price2 =  x
+            else:
+                max_profit2 = max(max_profit2, max_price2 - x)
+            profit2[i] = max_profit2
+
+        max_profit = 0 
+        for i in range(len(prices)): 
+            sum_profit = profit1[i] + profit2[i]
+            if sum_profit > max_profit: 
+                max_profit = sum_profit
+
+        return max_profit # Return solution
+
 
 def main():
     array = input().split(" ")
