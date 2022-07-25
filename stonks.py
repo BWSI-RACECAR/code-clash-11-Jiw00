@@ -45,7 +45,7 @@ class Solution:
         total = 0
         initial = prices[0]
         pos = 0
-        print(price)
+        print(prices)
         for x in range(pos, len(prices)):
             if initial >= prices[x]:
                 initial = prices[x]
