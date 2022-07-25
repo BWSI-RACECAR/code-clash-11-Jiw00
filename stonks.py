@@ -46,14 +46,13 @@ class Solution:
         second = 0
         initial = prices[0]
         pos = 0
-        max = 0
+        max =  prices[0]
         for x in range(pos, len(prices)):
             temp = prices[x] - initial
             if prices[x] < max:
                 initial = prices[x]
                 pos = x
                 if price>=second:
-                    
                     if (price >= first and second > 0) or first == 0:
                         second = first
                         first = price
