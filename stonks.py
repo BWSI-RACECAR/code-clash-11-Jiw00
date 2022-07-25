@@ -53,18 +53,20 @@ class Solution:
                 initial = prices[x]
                 pos = x
                 if price>=second:
+                    
                     if (price >= first and second > 0) or first == 0:
+                        second = first
                         first = price
                     else:
                         second = price
                 price = 0
-           
             if temp > price and temp > 0:
                 price = temp
                 max = prices[x]
         
         if price>=second:
             if price >= first:
+                second = first
                 first = price
             else:
                 second = price
